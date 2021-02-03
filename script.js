@@ -11,11 +11,35 @@ const peopleElems = Array.from(document.querySelectorAll('.person'));
 peopleElems.forEach((personElem) => {
   personElem.addEventListener('click', (event) => {
     for (let i = 0; i < users.length; i++) {
-      console.log(event.target);
-      if (event.target.firstChild.innerHTML === users[i].name) {
-        users[i].selected = true;
+      if (event.target.tagName === 'P') {
+        if (event.target.innerHTML === users[i].name && !users[i].selected) {
+          users[i].selected = true;
+          event.target.parentElement.classList.add('selected');
+        } else if (
+          event.target.innerHTML === users[i].name &&
+          users[i].selected
+        ) {
+          users[i].selected = false;
+          event.target.parentElement.classList.remove('selected');
+        } else {
+          users[i].selected = false;
+        }
       } else {
-        users[i].selected = false;
+        if (
+          event.target.firstElementChild.innerHTML === users[i].name &&
+          !users[i].selected
+        ) {
+          users[i].selected = true;
+          event.target.classList.add('selected');
+        } else if (
+          event.target.firstElementChild.innerHTML === users[i].name &&
+          users[i].selected
+        ) {
+          users[i].selected = false;
+          event.target.classList.remove('selected');
+        } else {
+          users[i].selected = false;
+        }
       }
     }
   });

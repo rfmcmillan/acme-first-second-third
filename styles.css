@@ -52,7 +52,7 @@ div {
   align-items: center;
 }
 .person {
-  background-color: tomato;
+  background-color: lightgray;
   height: 3em;
   flex: 1;
   margin: 0.5px;
@@ -62,4 +62,7 @@ div {
   position: relative;
   top: 1%;
   left: 10%;
+}
+.selected {
+  background-color: tomato;
 }
