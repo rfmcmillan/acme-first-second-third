@@ -26,9 +26,7 @@ function placeUsers() {
     if (users[i].slot === 'first') {
       const firstSlot = document.querySelector('#first');
       const userDiv = document.createElement('div');
-      const userText = document.createElement('p');
-      userDiv.appendChild(userText);
-      userText.innerHTML = users[i].name;
+      userDiv.innerHTML = users[i].name;
       userDiv.className = 'user';
       firstSlot.appendChild(userDiv);
     } else if (users[i].slot === 'second') {
@@ -52,35 +50,19 @@ function placeUsers() {
   console.log('users placed');
 }
 // function that toggles the user object's 'selected' value to true or false and toggles the corresponding userElem's className to 'selected'.
+
 function toggleSelected(event) {
   for (let i = 0; i < users.length; i++) {
-    if (event.target.tagName === 'P') {
-      if (event.target.innerHTML === users[i].name && !users[i].selected) {
+    if (event.target.innerHTML === users[i].name) {
+      if (!users[i].selected) {
         users[i].selected = true;
-        event.target.parentElement.classList.add('selected');
-      } else if (
-        event.target.innerHTML === users[i].name &&
-        users[i].selected
-      ) {
-        users[i].selected = false;
-        event.target.parentElement.classList.remove('selected');
-      } else {
-        users[i].selected = false;
-      }
-    } else {
-      if (
-        event.target.firstElementChild.innerHTML === users[i].name &&
-        !users[i].selected
-      ) {
-        users[i].selected = true;
+        console.log('before', event.target);
         event.target.classList.add('selected');
-      } else if (
-        event.target.firstElementChild.innerHTML === users[i].name &&
-        users[i].selected
-      ) {
+        console.log('after', event.target);
+      } else if (users[i].selected) {
+        console.log('before', event.target);
         event.target.classList.remove('selected');
-        users[i].selected = false;
-      } else {
+        console.log('after', event.target);
         users[i].selected = false;
       }
     }
@@ -158,29 +140,12 @@ function moveSelectedUsersLeft(users) {
   }
 }
 
-function clearPreviousUsers() {
-  const firstSlot = document.querySelector('#first');
-  while (firstSlot.children.length) {
-    firstSlot.removeChild(firstSlot.lastChild);
-  }
-  const secondSlot = document.querySelector('#second');
-  while (secondSlot.children.length) {
-    secondSlot.removeChild(secondSlot.lastChild);
-  }
-  const thirdSlot = document.querySelector('#third');
-  while (thirdSlot.children.length) {
-    thirdSlot.removeChild(thirdSlot.lastChild);
-  }
-}
-
 const userElems = Array.from(document.querySelectorAll('.user'));
 
 // add event listeners to userElems
 userElems.forEach((userElem) => {
   userElem.addEventListener('click', (event) => {
     toggleSelected(event);
-    selectedPeople = Array.from(document.querySelectorAll('.selected'));
-    console.log(selectedPeople);
   });
 });
 
