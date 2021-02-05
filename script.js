@@ -1,10 +1,10 @@
 const slots = ['first', 'second', 'third'];
 
 const users = [
-  { id: 1, name: 'moe', slot: 'first' },
-  { id: 2, name: 'larry', slot: 'first' },
-  { id: 3, name: 'curly', slot: 'first' },
-  { id: 4, name: 'lucy', slot: 'first' },
+  { id: 1, name: 'Moe', slot: 'first' },
+  { id: 2, name: 'Larry', slot: 'first' },
+  { id: 3, name: 'Curly', slot: 'first' },
+  { id: 4, name: 'Lucy', slot: 'first' },
 ];
 
 // function that places users depending on their initial objects' slot position
@@ -12,14 +12,13 @@ function placeUsers() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].slot === 'first') {
       const firstSlot = document.querySelector('#first');
-      const userDiv = document.createElement('div');
+      const userDiv = document.createElement('button');
       userDiv.innerHTML = users[i].name;
       userDiv.className = 'user';
       firstSlot.appendChild(userDiv);
     } else if (users[i].slot === 'second') {
       const secondSlot = document.querySelector('#second');
-      const userDiv = document.createElement('div');
-      const userText = document.createElement('p');
+      const userDiv = document.createElement('button');
       userDiv.appendChild(userText);
       userText.innerHTML = users[i].name;
       userDiv.className = 'user';
@@ -27,7 +26,6 @@ function placeUsers() {
     } else if (users[i].slot === 'third') {
       const thirdSlot = document.querySelector('#third');
       const userDiv = document.createElement('div');
-      const userText = document.createElement('p');
       userDiv.appendChild(userText);
       userText.innerHTML = users[i].name;
       userDiv.className = 'user';
