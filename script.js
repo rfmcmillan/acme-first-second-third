@@ -1,39 +1,25 @@
 const slots = ['first', 'second', 'third'];
 
 const users = [
-  { id: 1, name: 'Moe', slot: 'first' },
-  { id: 2, name: 'Larry', slot: 'first' },
+  { id: 1, name: 'Moe', slot: 'second' },
+  { id: 2, name: 'Larry', slot: 'second' },
   { id: 3, name: 'Curly', slot: 'first' },
   { id: 4, name: 'Lucy', slot: 'first' },
 ];
 
-// function that places users depending on their initial objects' slot position
+function createUser(user) {
+  const whichSlot = document.querySelector(`#${user.slot}`);
+  const userBtn = document.createElement('button');
+  userBtn.innerHTML = user.name;
+  userBtn.className = 'user';
+  whichSlot.appendChild(userBtn);
+}
+
 function placeUsers() {
   for (let i = 0; i < users.length; i++) {
-    if (users[i].slot === 'first') {
-      const firstSlot = document.querySelector('#first');
-      const userDiv = document.createElement('button');
-      userDiv.innerHTML = users[i].name;
-      userDiv.className = 'user';
-      firstSlot.appendChild(userDiv);
-    } else if (users[i].slot === 'second') {
-      const secondSlot = document.querySelector('#second');
-      const userDiv = document.createElement('button');
-      userDiv.appendChild(userText);
-      userText.innerHTML = users[i].name;
-      userDiv.className = 'user';
-      secondSlot.appendChild(userDiv);
-    } else if (users[i].slot === 'third') {
-      const thirdSlot = document.querySelector('#third');
-      const userDiv = document.createElement('div');
-      userDiv.appendChild(userText);
-      userText.innerHTML = users[i].name;
-      userDiv.className = 'user';
-      thirdSlot.appendChild(userDiv);
-    }
+    createUser(users[i]);
   }
 }
-// function that toggles the user object's 'selected' value to true or false and toggles the corresponding userElem's className to 'selected'.
 
 function toggleSelected(event) {
   for (let i = 0; i < users.length; i++) {
@@ -67,25 +53,6 @@ const moveRightBtn1 = document.getElementById('move-right-1');
 const moveRightBtn2 = document.getElementById('move-right-2');
 const moveLeftBtn2 = document.getElementById('move-left-2');
 const moveLeftBtn3 = document.getElementById('move-left-3');
-
-// function moveRight() {
-//   const firstSlot = document.querySelector('#first');
-//   const secondSlot = document.querySelector('#second');
-//   for (let i = 0; i < users.length; i++) {
-//     if (users[i].selected) {
-//       if (users[i].slot === 'first') {
-//         users[i].slot = 'second';
-//         const firstChildren = [...firstSlot.children];
-//         for (let j = 0; j < firstChildren.length; j++) {
-//           if ([...firstChildren[j].classList].includes('selected')) {
-//             firstSlot.removeChild(firstChildren[j]);
-//             secondSlot.appendChild(firstChildren[j]);
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 moveRightBtn1.addEventListener('click', () => {
   const firstSlot = document.querySelector('#first');
