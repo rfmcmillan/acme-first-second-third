@@ -42,12 +42,9 @@ function toggleSelected(event) {
     if (event.target.innerHTML === users[i].name) {
       if (!users[i].selected) {
         users[i].selected = true;
-
         event.target.classList.add('selected');
-        console.log('after', event.target);
       } else if (users[i].selected) {
         event.target.classList.remove('selected');
-        console.log('after', event.target);
         users[i].selected = false;
       }
     }
@@ -72,6 +69,25 @@ const moveRightBtn1 = document.getElementById('move-right-1');
 const moveRightBtn2 = document.getElementById('move-right-2');
 const moveLeftBtn2 = document.getElementById('move-left-2');
 const moveLeftBtn3 = document.getElementById('move-left-3');
+
+// function moveRight() {
+//   const firstSlot = document.querySelector('#first');
+//   const secondSlot = document.querySelector('#second');
+//   for (let i = 0; i < users.length; i++) {
+//     if (users[i].selected) {
+//       if (users[i].slot === 'first') {
+//         users[i].slot = 'second';
+//         const firstChildren = [...firstSlot.children];
+//         for (let j = 0; j < firstChildren.length; j++) {
+//           if ([...firstChildren[j].classList].includes('selected')) {
+//             firstSlot.removeChild(firstChildren[j]);
+//             secondSlot.appendChild(firstChildren[j]);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 moveRightBtn1.addEventListener('click', () => {
   const firstSlot = document.querySelector('#first');
